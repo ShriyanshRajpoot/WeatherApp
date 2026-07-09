@@ -1,35 +1,35 @@
-let inp= document.querySelector("input")
- let btn= document.querySelector("button")
- let h1= document.querySelector("h1")
- let h2= document.querySelector("h2")
- btn.addEventListener("click",()=>{
-    let apiK='9f6290d6cda9a36a63755fadee71f83d'
-    let city=inp.value
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiK}`).
-    then((data)=>{
-        return data.json()
 
-    }).then((info)=>{
-        console.log(info);
-        h2.innerText=info.name
-        h1.innerText=info.main.temp
-        
+const city = document.getElementById("city");
+const temp = document.getElementById("temp");
+const desc = document.getElementById("desc");
+const humidity = document.getElementById("humidity");
+const wind = document.getElementById("wind");
+const icon = document.getElementById("icon");
 
-    })
+const apiKey = "9f6290d6cda9a36a63755fadee71f83d";
 
- })
+btn.addEventListener("click", () => {
 
+    const cityName = inp.value.trim();
 
+    if(cityName===""){
+        alert("Enter a city name");
+        return;
+    }
 
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`)
+    .then(res=>res.json())
+    .then(data=>{
 
+        city.innerText=data.name;
+        temp.innerText=Math.round(data.main.temp)+"°C";
+        desc.innerText=data.weather[0].description;
 
+        humidity.innerText=data.main.humidity+"%";
+        wind.innerText=data.wind.speed+" km/h";
 
+        icon.src=`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
+    });
 
-
-
-
-//  let userN="hello"
-//  let lastName="byee"
-// //  let fullName=userN+ "       "+lastName
-// let fullName=`${userN}     ${lastName}`
+});
