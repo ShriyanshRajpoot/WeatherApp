@@ -72,13 +72,41 @@ margin-top:20px;
 </head>
 <body>
 
-  <div>
-    <input>
-    <button>Search</button>
-  </div>
- <h2></h2>
- <h1></h1>
+  <div class="container">
 
-  <script src="./index.js"></script>
+    <div class="search-box">
+        <input type="text" placeholder="Enter city name">
+        <button>Search</button>
+    </div>
+
+    <div class="weather-card">
+
+        <h2 id="city">City</h2>
+
+        <img id="icon" src="" alt="">
+
+        <h1 id="temp">--°C</h1>
+
+        <p id="desc">Weather</p>
+
+        <div class="details">
+
+            <div>
+                <h3>Humidity</h3>
+                <p id="humidity">--%</p>
+            </div>
+
+            <div>
+                <h3>Wind</h3>
+                <p id="wind">-- km/h</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="./index.js"></script>
 </body>
 </html>
