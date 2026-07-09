@@ -6,6 +6,11 @@ const desc = document.getElementById("desc");
 const humidity = document.getElementById("humidity");
 const wind = document.getElementById("wind");
 const icon = document.getElementById("icon");
+const feelsLike = document.getElementById("feelsLike");
+const pressure = document.getElementById("pressure");
+const visibility = document.getElementById("visibility");
+const sunrise = document.getElementById("sunrise");
+const sunset = document.getElementById("sunset");
 
 const apiKey = "9f6290d6cda9a36a63755fadee71f83d";
 
