@@ -36,6 +36,25 @@ btn.addEventListener("click", () => {
 
         icon.src=`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
-    });
+        feelsLike.innerText = Math.round(data.main.feels_like) + "°C";
+
+        pressure.innerText = data.main.pressure + " hPa";
+
+        visibility.innerText = (data.visibility / 1000).toFixed(1) + " km";
+
+        const sunriseTime = new Date(data.sys.sunrise * 1000);
+        const sunsetTime = new Date(data.sys.sunset * 1000);
+
+        sunrise.innerText = sunriseTime.toLocaleTimeString([], {
+         hour: "2-digit",
+         minute: "2-digit"
+   });
+
+        sunset.innerText = sunsetTime.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+   });
+
+        });
 
 });
