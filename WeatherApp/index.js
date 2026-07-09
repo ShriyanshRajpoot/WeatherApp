@@ -1,4 +1,5 @@
-
+const inp = document.querySelector("input");
+const btn = document.querySelector("button");
 const city = document.getElementById("city");
 const temp = document.getElementById("temp");
 const desc = document.getElementById("desc");
