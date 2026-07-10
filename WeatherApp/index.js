@@ -2,6 +2,7 @@ const inp = document.querySelector("input");
 const btn = document.querySelector("button");
 const city = document.getElementById("city");
 const temp = document.getElementById("temp");
+const country = document.getElementById("country");
 const desc = document.getElementById("desc");
 const humidity = document.getElementById("humidity");
 const wind = document.getElementById("wind");
@@ -82,6 +83,7 @@ btn.addEventListener("click", () => {
             }
 
             city.innerText = data.name;
+            country.innerText = data.sys.country;
             temp.innerText = Math.round(data.main.temp) + "°C";
             desc.innerText = data.weather[0].description;
 
@@ -91,7 +93,11 @@ btn.addEventListener("click", () => {
             icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
             feelsLike.innerText = Math.round(data.main.feels_like) + "°C";
-            pressure.innerText = data.main.pressure + " hPa";
+
+            if (pressure) {
+                pressure.innerText = data.main.pressure + " hPa";
+            }
+
             visibility.innerText = (data.visibility / 1000).toFixed(1) + " km";
 
             const sunriseTime = new Date(data.sys.sunrise * 1000);
@@ -106,6 +112,7 @@ btn.addEventListener("click", () => {
                 hour: "2-digit",
                 minute: "2-digit"
             });
+
             changeBackground(data.weather[0].main);
         })
         .catch(() => {
