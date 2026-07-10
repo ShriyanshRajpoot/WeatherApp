@@ -4,9 +4,60 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Weather App</title>
 
   <style>
+    body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition: background 0.8s ease;
+}
+
+.weather-card{
+    width:380px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(15px);
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,.2);
+    color:white;
+    transition:.4s;
+}
+
+.default{
+    background: linear-gradient(135deg,#74ebd5,#ACB6E5);
+}
+
+.clear{
+    background: linear-gradient(135deg,#f6d365,#fda085);
+}
+
+.clouds{
+    background: linear-gradient(135deg,#bdc3c7,#2c3e50);
+}
+
+.rain{
+    background: linear-gradient(135deg,#4b79a1,#283e51);
+}
+
+.thunderstorm{
+    background: linear-gradient(135deg,#232526,#414345);
+}
+
+.snow{
+    background: linear-gradient(135deg,#e6dada,#274046);
+}
+
+.mist{
+    background: linear-gradient(135deg,#757f9a,#d7dde8);
+}
+
     .details{
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -30,7 +81,6 @@
     font-weight:bold;
     margin-top:5px;
 }
-
   </style>
 
 </head>
@@ -56,6 +106,16 @@
         <div class="details">
 
             <div>
+                <h3>Humidity</h3>
+                <p id="humidity">--%</p>
+            </div>
+
+            <div>
+                <h3>Wind</h3>
+                <p id="wind">-- km/h</p>
+            </div>
+
+            <div>
     <h3>Feels Like</h3>
     <p id="feelsLike">--°C</p>
 </div>
@@ -78,17 +138,7 @@
 <div>
     <h3>Sunset</h3>
     <p id="sunset">--</p>
-</div>         
-
-            <div>
-                <h3>Humidity</h3>
-                <p id="humidity">--%</p>
-            </div>
-
-            <div>
-                <h3>Wind</h3>
-                <p id="wind">-- km/h</p>
-            </div>
+</div>
 
         </div>
 
