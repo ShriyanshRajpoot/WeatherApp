@@ -14,47 +14,102 @@ const sunset = document.getElementById("sunset");
 
 const apiKey = "9f6290d6cda9a36a63755fadee71f83d";
 
+document.body.classList.add("default");
+
+function changeBackground(weather) {
+    const weatherClasses = [
+        "default",
+        "clear",
+        "clouds",
+        "rain",
+        "thunderstorm",
+        "snow",
+        "mist"
+    ];
+
+    document.body.classList.remove(...weatherClasses);
+
+    switch (weather.toLowerCase()) {
+        case "clear":
+            document.body.classList.add("clear");
+            break;
+
+        case "clouds":
+            document.body.classList.add("clouds");
+            break;
+
+        case "rain":
+        case "drizzle":
+            document.body.classList.add("rain");
+            break;
+
+        case "thunderstorm":
+            document.body.classList.add("thunderstorm");
+            break;
+
+        case "snow":
+            document.body.classList.add("snow");
+            break;
+
+        case "mist":
+        case "fog":
+        case "haze":
+        case "smoke":
+            document.body.classList.add("mist");
+            break;
+
+        default:
+            document.body.classList.add("default");
+    }
+}
+
 btn.addEventListener("click", () => {
 
     const cityName = inp.value.trim();
 
-    if(cityName===""){
+    if (cityName === "") {
         alert("Enter a city name");
         return;
     }
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`)
-    .then(res=>res.json())
-    .then(data=>{
+        .then(res => res.json())
+        .then(data => {
 
-        city.innerText=data.name;
-        temp.innerText=Math.round(data.main.temp)+"°C";
-        desc.innerText=data.weather[0].description;
+            if (data.cod != 200) {
+                alert("City not found!");
+                return;
+            }
 
-        humidity.innerText=data.main.humidity+"%";
-        wind.innerText=data.wind.speed+" km/h";
+            city.innerText = data.name;
+            temp.innerText = Math.round(data.main.temp) + "°C";
+            desc.innerText = data.weather[0].description;
 
-        icon.src=`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            humidity.innerText = data.main.humidity + "%";
+            wind.innerText = data.wind.speed + " km/h";
 
-        feelsLike.innerText = Math.round(data.main.feels_like) + "°C";
+            icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
-        pressure.innerText = data.main.pressure + " hPa";
+            feelsLike.innerText = Math.round(data.main.feels_like) + "°C";
+            pressure.innerText = data.main.pressure + " hPa";
+            visibility.innerText = (data.visibility / 1000).toFixed(1) + " km";
 
-        visibility.innerText = (data.visibility / 1000).toFixed(1) + " km";
+            const sunriseTime = new Date(data.sys.sunrise * 1000);
+            const sunsetTime = new Date(data.sys.sunset * 1000);
 
-        const sunriseTime = new Date(data.sys.sunrise * 1000);
-        const sunsetTime = new Date(data.sys.sunset * 1000);
+            sunrise.innerText = sunriseTime.toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit"
+            });
 
-        sunrise.innerText = sunriseTime.toLocaleTimeString([], {
-         hour: "2-digit",
-         minute: "2-digit"
-   });
-
-        sunset.innerText = sunsetTime.toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit"
-   });
-
+            sunset.innerText = sunsetTime.toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit"
+            });
+            changeBackground(data.weather[0].main);
+        })
+        .catch(() => {
+            alert("Something went wrong. Please try again.");
         });
 
 });
