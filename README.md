@@ -1,66 +1,94 @@
 # 🌦️ Weather App
 
-A simple and responsive weather application built with **js** that allows users to search for the current weatherconditions of any city.
-The app fetches real-time weather data from a weather API and displays useful information in a clean user interface.
+A simple and responsive Weather App built using **HTML, CSS, and JavaScript** that allows users to search for the current weather conditions of any city. The application fetches real-time weather data using the **OpenWeather API** and displays it in a clean and user-friendly interface.
 
+---
 
 ## 🚀 Features
 
-- 🔍 Search weather by city name
-- 🌡️ Current temperature
-- ☁️ Weather condition with icon
-- 📱 Responsive design
-- ⚡ Fast and user-friendly interface
+* 🔍 Search weather by city name
+* 🌡️ Display current temperature
+* ☁️ Weather condition with icon
+* 💧 Humidity information
+* 💨 Wind speed
+* ⏳ Loading indicator while fetching data
+* ❌ Error handling for invalid city names
+* 📱 Responsive design
 
+---
 
 ## 🛠️ Tech Stack
 
-- HTML
-- JavaScript (ES6+)
-- CSS3
-- OpenWeather API
+* HTML5
+* CSS3
+* JavaScript (ES6+)
+* OpenWeather API
 
+---
 
 ## 📂 Project Structure
+
+```text
 WeatherApp/
 │── index.html
 │── style.css
 │── index.js
 │── README.md
+```
 
+---
 
 ## 🚀 Getting Started
 
-1. Clone the repository
+### 1. Clone the repository
+
+```bash
 git clone https://github.com/ShriyanshRajpoot/WeatherApp.git
+```
 
-2. Open the project folder
+### 2. Navigate to the project folder
+
+```bash
 cd WeatherApp
+```
 
-3. Add your API Key
-Open index.js and replace:
-const apiKey = "YOUR_API_KEY";
-with your OpenWeather API key.
-You can get a free API key from:
+### 3. Get an API Key
+
+Create a free API key from:
+
 https://openweathermap.org/api
 
-4. Run the project
-Simply open index.html in your browser.
+### 4. Add your API Key
 
+Open **index.js** and replace:
+
+```javascript
+const apiKey = "YOUR_API_KEY";
+```
+
+with your own OpenWeather API key.
+
+### 5. Run the Project
+
+Simply open **index.html** in your preferred web browser.
+
+---
 
 ## 📖 How It Works
 
-1. Enter a city name.
-2. Click the Search button.
+1. Enter the name of any city.
+2. Click the **Search** button.
 3. The app sends a request to the OpenWeather API.
-4. Weather data is fetched and displayed instantly.
+4. Weather information is fetched and displayed instantly.
 
+---
 
 ## 📌 Future Improvements
 
--📍 Current location weather using Geolocation API
--🌦️ 5-day weather forecast
--🌙 Dark/Light mode
--🗺️ Search suggestions
--🌡️ Celsius/Fahrenheit toggle
--🛰️ Weather map integration
+* 📍 Current location weather
+* 🌦️ 5-day weather forecast
+* 🗺️ Search suggestions
+* 🌡️ Celsius/Fahrenheit toggle
+* 🛰️ Weather map integration
+
+---
