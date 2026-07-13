@@ -246,10 +246,10 @@ body{
 }
     </style>
 
+</head> 
   
-</head>
 <body>
-
+    
   <div class="container">
 
     <div class="search-box">
@@ -259,7 +259,10 @@ body{
 
     <div class="weather-card">
 
-        <h2 id="city">City</h2>
+        <h2>
+    <span id="city">City</span>,
+    <span id="country">Country</span>
+</h2>
 
         <img id="icon" src="" alt="">
 
@@ -295,6 +298,11 @@ body{
 </div>
 
 <div>
+    <h3>Max Temp</h3>
+    <p id="maxTemp">--°C</p>
+</div>
+
+<div>
     <h3>Sunrise</h3>
     <p id="sunrise">--</p>
 </div>
@@ -313,3 +321,4 @@ body{
 <script src="./index.js"></script>
 </body>
 </html>
+  
