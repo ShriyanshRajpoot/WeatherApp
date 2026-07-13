@@ -2,6 +2,7 @@ const inp = document.querySelector("input");
 const btn = document.querySelector("button");
 const city = document.getElementById("city");
 const temp = document.getElementById("temp");
+const maxTemp = document.getElementById("maxTemp");
 const country = document.getElementById("country");
 const desc = document.getElementById("desc");
 const humidity = document.getElementById("humidity");
@@ -91,8 +92,10 @@ btn.addEventListener("click", () => {
             wind.innerText = data.wind.speed + " km/h";
 
             icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            icon.style.display = "block";
 
             feelsLike.innerText = Math.round(data.main.feels_like) + "°C";
+            maxTemp.innerText = Math.round(data.main.temp_max) + "°C";
 
             if (pressure) {
                 pressure.innerText = data.main.pressure + " hPa";
@@ -119,4 +122,9 @@ btn.addEventListener("click", () => {
             alert("Something went wrong. Please try again.");
         });
 
+});
+inp.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        btn.click();
+    }
 });
