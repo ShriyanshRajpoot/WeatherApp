@@ -14,7 +14,7 @@ const visibility = document.getElementById("visibility");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
 
-const apiKey = "9f6290d6cda9a36a63755fadee71f83d";
+const apiKey = "Your API Key";
 
 document.body.classList.add("default");
 
